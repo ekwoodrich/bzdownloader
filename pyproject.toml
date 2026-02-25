@@ -1,20 +1,33 @@
-[tool.poetry]
+[project]
 name = "bzdownloader"
 version = "0.1.0"
 description = "TUI to download backblaze restore files"
-authors = ["Kyle Lexmond"]
+authors = [
+    { name = "Kyle Lexmond" }
+]
+dependencies = [
+    "requests>=2.26.0",
+    "tqdm>=4.62.3",
+    "questionary>=1.10.0",
+    "humanize>=3.13.1",
+]
+requires-python = ">=3.8"
+readme = "README.md"
+license = { text = "MIT" }
 
-[tool.poetry.dependencies]
-python = "^3.8"
-requests = "^2.26.0"
-tqdm = "^4.62.3"
-questionary = "^1.10.0"
-humanize = "^3.13.1"
+[project.scripts]
+bzdownloader = "bzdownloader.bzdownloader:main"
 
-[tool.poetry.dev-dependencies]
-black = "^21.12b0"
-pyre-check = "^0.9.9"
+[project.optional-dependencies]
+dev = [
+    "black>=21.12b0",
+    "pyre-check>=0.9.9",
+    "pytest>=7.0.0",
+]
 
 [build-system]
-requires = ["poetry-core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["bzdownloader"]

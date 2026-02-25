@@ -460,7 +460,7 @@ class BzDownloader:
                 )
 
 
-if __name__ == "__main__":
+def main():
     parser = argparse.ArgumentParser(
         description="Download restore files from Backblaze Personal Backup"
     )
@@ -503,3 +503,7 @@ if __name__ == "__main__":
         end = time.perf_counter()
         duration = end - start
         print(f"Took {duration:.2f} secs to download {restore.zipsize} bytes")
+
+
+if __name__ == "__main__":
+    main()
